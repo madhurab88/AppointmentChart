@@ -25,33 +25,33 @@ sub print_html_body_section {
        <input type="button" id="newAppointment" value="New"  onclick="displayFields()">
         <span id="info"></span><br>
     };
-    print qq{ <div id="newAppointmentForm"  style="display:none;" ><form id="formoid" action="studentFormInsert.php" title="" method="post">
+    print qq{ <div id="newAppointmentForm"  style="display:none;" ><form id="formid"  title="" method="post">
 
         <div>
-            <input type="button" id="addButton"  name="submiaddButtontButton" value="ADD" onclick="submitForm()">
+            <input type="button" id="addButton"  name="submiaddButtontButton" value="ADD" onclick="submitAddForm()">
         
             <input type="button" id="cancelButton"  name="cancelButton" value="Cancel" onclick="undisplayFields()">
         </div>
     <br>\n
         <div >
-            <label >Date</label>
-            <input type="text" id="date" name="date" >
+            <label >Appointment Date</label>
+            <input type="date"  min="2017-03-24" id="appDate" name="date" >
         </div><br>
         <div>
-            <label >Time</label>
-            <input type="text" id="time" name="time" >
+            <label >Appointment Time</label>
+            <input type="time" id="appTime" name="time" >
         </div><br>
         <div>
-            <label >Description</label>
-            <input type="text" id="desc" name="desc" >
+            <label >Appointment Description</label>
+            <input type="text" id="appDesc" name="desc" >
         </div>
     
         
  </form></div><br>};
-    
-	print qq{<input type="text" name="search" placeholder="Enter the Search String..">};
-	print qq{\t<input type="button" value="Search" onclick="ajax_search()" >};
     print qq{<div id="result"></div><br>\n};
+	print qq{<input id ="appSearchTxt" type="text" name="search" placeholder="Enter the Search String..">};
+	print qq{\t<input type="button" id="appSearchBt" value="Search"  >};
+    print qq{<div id="displayTable"></div><br>\n};
     print "</center>\n";
     print "</body>\n";
 }

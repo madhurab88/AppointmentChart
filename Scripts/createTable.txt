@@ -1,0 +1,4 @@
+create table public.appointments(
+apntmnt_desc text,
+ apntmnt_time timestamp without time zone
+);

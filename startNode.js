@@ -6,39 +6,24 @@ var express = require('express')
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
-var script = path.join(__dirname, '/guest.cgi');
  
-  app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
  
  
-app.get('/guest.cgi', function(req, res){
-      var perl = new Perlcgi(script,req,null,function(err,data){
+app.get('/testAjax', function(req,res){
+	var perl = new Perlcgi(path.join(__dirname, 'public/mySqlSearch.cgi'),req,null,function(err,data){
 			//console.log("test..."+data);
 			 
 			if(err){
 			console.log(err);
 			}
-
-			res.header(perl.getHeader());
-			res.write(data);
+			//console.log(data);
+			//res.header(perl.getHeader());
+			res.send(data);
 			res.end();
-		});                    
-   });
-
-app.get('/hello.cgi', function(req, res){
-		
-      var perl = new Perlcgi(path.join(__dirname, '/hello.cgi'),req,null,function(err,data){
-			//console.log("test..."+data);
-			 
-			if(err){
-			console.log(err);
-			}
-
-			res.header(perl.getHeader());
-			res.write(data);
-			res.end();
-		});                    
-   });
+		});  
+}
+);
 app.get('/mkApp.cgi', function(req, res){
 		
       var perl = new Perlcgi(path.join(__dirname, '/mkApp.cgi'),req,null,function(err,data){
@@ -53,18 +38,7 @@ app.get('/mkApp.cgi', function(req, res){
 			res.end();
 		});                    
    });
-app.post('/guest.cgi', function(req, res){
-       var perl = new Perlcgi(script,req,null,function(err,data){
-         
-       if(err){              
-                console.log(err);
-                }                
-                 res.header(perl.getHeader());
-                 res.write(data);
-                 res.end();
-       });
-   });
- 
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

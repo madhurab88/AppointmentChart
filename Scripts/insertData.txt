@@ -1,0 +1,7 @@
+insert into appointments values ( 'appointment with John', (CURRENT_TIMESTAMP + interval '-1 day'));
+
+insert into appointments values ( 'appointment with Mike', (CURRENT_TIMESTAMP + interval '-3 day'));
+
+insert into appointments values ( 'appointment with Charles', (CURRENT_TIMESTAMP + interval '4 day'));
+
+insert into appointments values ( 'appointment with madhu', (CURRENT_TIMESTAMP + interval '5 day'));
